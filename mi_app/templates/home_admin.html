@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Administrador de Menús</h1>
+
+    <h2>{{ restaurant1.nombre }}</h2>
+    <form action="{% url 'add_option' %}" method="POST">
+        <input type="hidden" name="restaurante_id" value="{{ restaurant1.id }}">
+
+        <h3>Entradas</h3>
+        <ul>
+            {% for entrada in restaurant1_entradas %}
+            <li>
+                <input type="checkbox" name="opcion_{{ entrada.id }}"> {{ entrada.opcion }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Fuertes</h3>
+        <ul>
+            {% for fuerte in restaurant1_fuertes %}
+            <li>
+                <input type="checkbox" name="opcion_{{ fuerte.id }}"> {{ fuerte.opcion }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Proteínas</h3>
+        <ul>
+            {% for proteina in restaurant1_proteinas %}
+            <li>
+                <input type="checkbox" name="opcion_{{ proteina.id }}"> {{ proteina.opcion }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h4>Agregar Nueva Opción</h4>
+        <select name="tipo">
+            <option value="entrada">Entrada</option>
+            <option value="fuerte">Fuerte</option>
+            <option value="proteina">Proteína</option>
+        </select>
+        <input type="text" name="new_opcion" placeholder="Nueva opción">
+        <button type="submit">Agregar Opción</button>
+    </form>
+
+    <h2>{{ restaurant2.nombre }}</h2>
+    <form action="{% url 'add_option' %}" method="POST">
+        <input type="hidden" name="restaurante_id" value="{{ restaurant2.id }}">
+
+        <h3>Entradas</h3>
+        <ul>
+            {% for entrada in restaurant2_entradas %}
+            <li>
+                <input type="checkbox" name="opcion_{{ entrada.id }}"> {{ entrada.opcion }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Fuertes</h3>
+        <ul>
+            {% for fuerte in restaurant2_fuertes %}
+            <li>
+                <input type="checkbox" name="opcion_{{ fuerte.id }}"> {{ fuerte.opcion }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Proteínas</h3>
+        <ul>
+            {% for proteina in restaurant2_proteinas %}
+            <li>
+                <input type="checkbox" name="opcion_{{ proteina.id }}"> {{ proteina.opcion }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h4>Agregar Nueva Opción</h4>
+        <select name="tipo">
+            <option value="entrada">Entrada</option>
+            <option value="fuerte">Fuerte</option>
+            <option value="proteina">Proteína</option>
+        </select>
+        <input type="text" name="new_opcion" placeholder="Nueva opción">
+        <button type="submit">Agregar Opción</button>
+    </form>
+</body>
+</html>
